@@ -5,3 +5,5 @@
 
 #phpstorm project files
 .idea
+
+/vendor/*
