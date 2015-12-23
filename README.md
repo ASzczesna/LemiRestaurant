@@ -96,9 +96,3 @@ How to prepare Yii advance template project, configure Apache server and git:
 11. To check if all the requirements are conformed open /path/to/yii/app/requirements.php and change the 14th line to
         $frameworkPath = dirname(__FILE__) . '/../../vendor/yiisoft/yii2/';
     and then copy this file to /frontend/web folder. Check it by opening frontend.dev/requirements.php in browser.
-
-
-        <?= $form->field($model, 'idcategory')->dropDownList(
-            ArrayHelper::map(Categories::find()->all(), 'idcategory', 'name'),
-            ['prompt' => 'Select category']
-        )?>
