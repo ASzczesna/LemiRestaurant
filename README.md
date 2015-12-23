@@ -85,7 +85,7 @@ How to prepare Yii advance template project, configure Apache server and git:
         	CustomLog ${APACHE_LOG_DIR}/access.log combined
         </VirtualHost>
 
-9.Type :
+9. Type
         sudo a2enmod rewrite
     to enable rewrite engine.
 
