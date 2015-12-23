@@ -92,7 +92,7 @@ a.desc:after {
 
 li.separator{
     position: relative;
-    z-index: -10;
+    z-index: -1;
     color: #4D4D4D;
     font-weight: bold;
     font-size: x-large;
@@ -105,6 +105,41 @@ li.separator a{
 footer{
     font-size: small;
 }
+
 footer p.pull-left{
     padding-top: 15px;
+}
+
+footer li.separator{
+    display: none;
+}
+
+
+.tooltip{
+    z-index: 0 !important;
+}
+.popover{
+    z-index: 0 !important;
+    width: 100% !important;
+}
+.tab {
+    /*border: 1px solid black;*/
+    font-size: 1.2em;
+}
+.tab td{
+    border-bottom: 3px double #cbcbcb;
+    border-top: 3px double #cbcbcb;
+    width: 50%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 15px 0px;
+}
+.tab td i{
+    font-size: 2em;
+    margin: 0 10px;
+    cursor: pointer;
+    color: #98C10F;
+}
+.tab td i:hover{
+    color: #BE0000;
 }

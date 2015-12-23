@@ -18,9 +18,25 @@ AppAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <?php
+$js = <<<'SCRIPT'
+/* To initialize BS3 tooltips set this below */
+$(function () {
+    $("[data-toggle='tooltip']").tooltip();
+});;
+/* To initialize BS3 popovers set this below */
+$(function () {
+    $("[data-toggle='popover']").popover();
+});
+SCRIPT;
+    // Register tooltip/popover initialization javascript
+    $this->registerJs($js);
+    ?>
+
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -37,7 +53,7 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'Menu', 'url' => ['/site/about']],
+        ['label' => 'Menu', 'url' => ['/site/menu']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
         ['label' => '|', 'options' => ['class' => 'separator'] ],
     ];

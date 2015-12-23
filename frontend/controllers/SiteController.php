@@ -117,7 +117,9 @@ class SiteController extends Controller
     {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
+            Yii::$app->params['adminEmail'] = 'szczesna.aleksandra@gmail.com';
+
+            if ($model->sendEmail( Yii::$app->params['adminEmail'])) {
                 Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
             } else {
                 Yii::$app->session->setFlash('error', 'There was an error sending email.');
@@ -136,9 +138,9 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionAbout()
-    {
-        return $this->render('about');
+    public function actionMenu()
+    {   $model = new ContactForm();
+        return $this->render('menu');
     }
 
     /**

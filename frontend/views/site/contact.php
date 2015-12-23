@@ -20,13 +20,13 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-6 col-lg-offset-3">
             <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 
-                <?= $form->field($model, 'name') ?>
+                <?= $form->field($model, 'name')->textInput(['placeholder' => 'Your name'])->label('') ?>
 
-                <?= $form->field($model, 'email') ?>
+                <?= $form->field($model, 'email')->textInput(['placeholder' => 'Your email address'])->label('') ?>
 
-                <?= $form->field($model, 'subject') ?>
+                <?= $form->field($model, 'subject')->textInput(['placeholder' => 'Subject of the message'])->label('') ?>
 
-                <?= $form->field($model, 'body')->textArea(['rows' => 8]) ?>
+                <?= $form->field($model, 'body')->textArea(['rows' => 8, 'placeholder' => 'What do You want to say?'])->label('') ?>
 
 <!--                <?//= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
 //                    'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
