@@ -46,8 +46,8 @@ $this->params['breadcrumbs'][] = $this->title;
 //<span data-toggle='tooltip'  data-placement='top' title='Click the dish name to show description'>
         //</span>
         echo "
-        <h2 class='col-lg-8 col-lg-offset-2'>$tempN</h2>";
-        echo "<table class='tab col-lg-6 col-lg-offset-3'>";
+        <h2 class='col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-xs-12'>$tempN</h2>";
+        echo "<table class='tab col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-10 col-xs-10'>";
 
         for ($j = 0; $j < count($dishes); $j++) {
             if ($categories[$i]['idcategory'] == $dishes[$j]['idcategory']) {
@@ -57,8 +57,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 echo "<tr >";
 
                 echo "<td> $tempN</td>";
-                echo "<td>$tempP</td>";
-                echo "<td><i class='glyphicon glyphicon-info-sign' data-toggle='popover'  data-placement='right'  data-title='Description' data-content='$tempD'></i></td>";
+                echo "<td>$tempP zł</td>";
+                echo "<td class='visible-lg visible-md'><i class='glyphicon glyphicon-info-sign' data-toggle='popover'  data-placement='right'  data-title='Description' data-content='$tempD'></i></td>";
+                echo "<td class='visible-sm visible-xs'><i class='glyphicon glyphicon-info-sign' data-toggle='popover'  data-placement='top' data-title='Description' data-content='$tempD'></i></td>";
 
                 echo "</tr>";
             }

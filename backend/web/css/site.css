@@ -89,3 +89,24 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+
+li.separator{
+    position: relative;
+    z-index: -1;
+    color: #4D4D4D;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+li.separator a{
+    color: #4D4D4D !important;
+}
+footer{
+    font-size: small;
+}
+footer p.pull-right{
+    font-size: 1.5em;
+}
+footer .glyphicon{
+    top: -5px !important;
+}

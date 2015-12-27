@@ -9,7 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
-
+use yii\widgets\Block;
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -28,7 +28,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'LemiRestaurant backroom',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -38,13 +38,28 @@ AppAsset::register($this);
         ['label' => 'Home', 'url' => ['/site/index']],
     ];
     if (Yii::$app->user->isGuest) {
+        $menuItems[] = ['label' => 'Register', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
-        $menuItems[] = [
-            'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-            'url' => ['/site/logout'],
-            'linkOptions' => ['data-method' => 'post']
+        $menuItems = [
+            [
+                'label' => 'Dishes',
+                'url' => ['/dishes'],
+            ],
+            [
+                'label' => 'Categories',
+                'url' => ['/categories'],
+            ],
+            [
+                'label' => '|', 'options' => ['class' => 'separator'] ,
+            ],
+            [
+                'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                'url' => ['/site/logout'],
+                'linkOptions' => ['data-method' => 'post']
+            ]
         ];
+
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
@@ -64,9 +79,27 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Aleksandra Szczęsna <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right"><?php
+            switch(rand(1,5)){
+                case 1:
+                    echo "<i class='glyphicon glyphicon-heart'></i>";
+                    break;
+                case 2:
+                    echo "<i class='glyphicon glyphicon-off'></i>";
+                    break;
+                case 3:
+                    echo "<i class='glyphicon glyphicon-music'></i>";
+                    break;
+                case 4:
+                    echo "<i class=' glyphicon glyphicon-sunglasses'></i>";
+                    break;
+                case 5:
+                    echo "<i class='glyphicon glyphicon-apple'></i>";
+                    break;
+            }
+             ?></p>
     </div>
 </footer>
 

@@ -5,7 +5,9 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use common\models\LoginForm;
+use backend\models\SignupForm;
 use yii\filters\VerbFilter;
+use backend\models\Index;
 
 /**
  * Site controller
@@ -20,10 +22,16 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
+                'only' => ['logout', 'signup'],
                 'rules' => [
                     [
                         'actions' => ['login', 'error'],
                         'allow' => true,
+                    ],
+                    [
+                        'actions' => ['signup'],
+                        'allow' => true,
+                        'roles' => ['?'],
                     ],
                     [
                         'actions' => ['logout', 'index'],
@@ -44,7 +52,7 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
-    public function actions()
+    public function actions()//= $model->content();
     {
         return [
             'error' => [
@@ -55,6 +63,13 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+//        $model = new Index;
+//        $data = $model->txt;
+//
+//        if (Yii::$app->user->isGuest) {
+//            $data = $model->btn;
+//        }
+        /*, array('data'=>$data)*/
         return $this->render('index');
     }
 
@@ -79,5 +94,25 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+    /**
+     * Signs user up.
+     *
+     * @return mixed
+     */
+    public function actionSignup()
+    {
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
+        }
+
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
     }
 }

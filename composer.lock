@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8580bd82955b1fbb80d47024e184056e",
+    "hash": "386d849c616bfe5c2a4a5954530e47ca",
+    "content-hash": "5885e0071297078d69a3dc3abc11eddd",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -100,6 +101,16 @@
             ]
         },
         {
+            "name": "bower-asset/jquery-prettyPhoto",
+            "version": "3.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/scaron/prettyphoto",
+                "reference": "master"
+            },
+            "type": "bower-asset-library"
+        },
+        {
             "name": "bower-asset/jquery.inputmask",
             "version": "3.1.63",
             "source": {
@@ -152,6 +163,44 @@
             ]
         },
         {
+            "name": "bower-asset/lightbox2",
+            "version": "2.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lokesh/lightbox2.git",
+                "reference": "2e7daa84b9cf6412084ed5c97fdb448942c62d31"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lokesh/lightbox2/zipball/2e7daa84b9cf6412084ed5c97fdb448942c62d31",
+                "reference": "2e7daa84b9cf6412084ed5c97fdb448942c62d31",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "js/lightbox.js",
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "Gruntfile.js",
+                    "node_modules",
+                    "bower_components",
+                    "test",
+                    "tests"
+                ]
+            },
+            "license": [
+                "CC BY 2.5"
+            ],
+            "description": "The original Lightbox script. Uses jQuery.",
+            "keywords": [
+                "gallery",
+                "images",
+                "jquery",
+                "lightbox",
+                "overlay"
+            ]
+        },
+        {
             "name": "bower-asset/punycode",
             "version": "v1.3.2",
             "source": {
@@ -181,16 +230,16 @@
         },
         {
             "name": "bower-asset/yii2-pjax",
-            "version": "v2.0.4",
+            "version": "v2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/jquery-pjax.git",
-                "reference": "3f20897307cca046fca5323b318475ae9dac0ca0"
+                "reference": "6818718408086db6bdcf33649cecb86b6b4f9b67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/3f20897307cca046fca5323b318475ae9dac0ca0",
-                "reference": "3f20897307cca046fca5323b318475ae9dac0ca0",
+                "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/6818718408086db6bdcf33649cecb86b6b4f9b67",
+                "reference": "6818718408086db6bdcf33649cecb86b6b4f9b67",
                 "shasum": ""
             },
             "require": {
@@ -211,6 +260,47 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "branchonline/yii2-lightbox",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BranchOnline/yii2-lightbox.git",
+                "reference": "67dc401eb6626b7aa4f4c0fa1156729bd075cf1e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BranchOnline/yii2-lightbox/zipball/67dc401eb6626b7aa4f4c0fa1156729bd075cf1e",
+                "reference": "67dc401eb6626b7aa4f4c0fa1156729bd075cf1e",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/lightbox2": "2.7.1",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "branchonline\\lightbox\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Jap Mul",
+                    "email": "jap@branchonline.nl"
+                }
+            ],
+            "description": "Lightbox widget for Yii2",
+            "keywords": [
+                "module",
+                "yii2"
+            ],
+            "time": "2015-09-16 09:59:26"
         },
         {
             "name": "cebe/markdown",
@@ -315,6 +405,53 @@
                 "html"
             ],
             "time": "2013-11-30 08:25:19"
+        },
+        {
+            "name": "nirvana-msu/yii2-prettyphoto",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nirvana-msu/yii2-prettyphoto.git",
+                "reference": "1ba59ec81549b70dd8bc652d46c74a5cfa8c9117"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nirvana-msu/yii2-prettyphoto/zipball/1ba59ec81549b70dd8bc652d46c74a5cfa8c9117",
+                "reference": "1ba59ec81549b70dd8bc652d46c74a5cfa8c9117",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery-prettyphoto": "*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "nirvana\\prettyphoto\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Stepanov",
+                    "email": "student_vmk@mail.ru"
+                }
+            ],
+            "description": "Yii2 extension for prettyPhoto jQuery lightbox clone",
+            "keywords": [
+                "prettyPhoto",
+                "widget",
+                "yii2"
+            ],
+            "time": "2015-03-06 22:48:44"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -459,21 +596,21 @@
         },
         {
             "name": "yiisoft/yii2-bootstrap",
-            "version": "2.0.4",
+            "version": "2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-bootstrap.git",
-                "reference": "1b6b1e61cf91c3cdd517d6a7e71d30bb212e4af0"
+                "reference": "1464f93834b1d5edb1f5625f7ffd6c3723fa4923"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/1b6b1e61cf91c3cdd517d6a7e71d30bb212e4af0",
-                "reference": "1b6b1e61cf91c3cdd517d6a7e71d30bb212e4af0",
+                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/1464f93834b1d5edb1f5625f7ffd6c3723fa4923",
+                "reference": "1464f93834b1d5edb1f5625f7ffd6c3723fa4923",
                 "shasum": ""
             },
             "require": {
                 "bower-asset/bootstrap": "3.3.* | 3.2.* | 3.1.*",
-                "yiisoft/yii2": ">=2.0.4"
+                "yiisoft/yii2": ">=2.0.6"
             },
             "type": "yii2-extension",
             "extra": {
@@ -505,7 +642,7 @@
                 "bootstrap",
                 "yii2"
             ],
-            "time": "2015-05-10 22:08:17"
+            "time": "2015-09-23 17:48:24"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -766,16 +903,16 @@
         },
         {
             "name": "yiisoft/yii2-debug",
-            "version": "2.0.4",
+            "version": "2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-debug.git",
-                "reference": "5c7081b2be71c61d3a50d978b31edc3e0b6f2f97"
+                "reference": "1b302e67521d46feb2413d9d96ca94ed82b39b0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/5c7081b2be71c61d3a50d978b31edc3e0b6f2f97",
-                "reference": "5c7081b2be71c61d3a50d978b31edc3e0b6f2f97",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/1b302e67521d46feb2413d9d96ca94ed82b39b0e",
+                "reference": "1b302e67521d46feb2413d9d96ca94ed82b39b0e",
                 "shasum": ""
             },
             "require": {
@@ -809,7 +946,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2015-05-10 22:08:56"
+            "time": "2015-08-06 16:14:06"
         },
         {
             "name": "yiisoft/yii2-faker",
@@ -914,7 +1051,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "nirvana-msu/yii2-prettyphoto": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
