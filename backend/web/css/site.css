@@ -110,3 +110,10 @@ footer p.pull-right{
 footer .glyphicon{
     top: -5px !important;
 }
+
+table th:first-child{
+    display: none;
+}
+table td:first-child{
+     display: none;
+ }

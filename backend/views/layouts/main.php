@@ -51,6 +51,10 @@ AppAsset::register($this);
                 'url' => ['/categories'],
             ],
             [
+                'label' => 'Users',
+                'url' => ['/user'],
+            ],
+            [
                 'label' => '|', 'options' => ['class' => 'separator'] ,
             ],
             [

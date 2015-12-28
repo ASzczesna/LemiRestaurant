@@ -24,7 +24,7 @@ $this->title = 'LR backend';
                 <p class="text-center"><a class="btn btn-lg btn-default" href="/categories">Categories &raquo;</a></p>
             </div>
             <div class="col-lg-4">
-                <p class="text-center"><a class="btn btn-lg btn-default" href="/users">Users &raquo;</a></p>
+                <p class="text-center"><a class="btn btn-lg btn-default" href="/user">Users &raquo;</a></p>
             </div>
         </div>
     </div>

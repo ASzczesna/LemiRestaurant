@@ -45,11 +45,11 @@ class Dishes extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'iddish' => 'Iddish',
-            'dname' => 'Dname',
+            'iddish' => 'ID',
+            'dname' => 'Name',
             'description' => 'Description',
             'price' => 'Price',
-            'idcategory' => 'Idcategory',
+            'idcategory' => 'ID Category',
         ];
     }
 

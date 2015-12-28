@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Dishes */
 
-$this->title = $model->iddish;
+$this->title = $model->dname;
 $this->params['breadcrumbs'][] = ['label' => 'Dishes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
