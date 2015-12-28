@@ -49,11 +49,30 @@ class ContactForm extends Model
      */
     public function sendEmail($email)
     {
-        return Yii::$app->mailer->compose()
-            ->setTo($email)
-            ->setFrom([$this->email => $this->name])
-            ->setSubject($this->subject)
-            ->setTextBody($this->body)
-            ->send();
+        $mainLocal = require( dirname(__FILE__) .'/../../common/config/main-local.php');
+        $dbData = $mainLocal['components']['db'];
+
+        $connection = new $dbData['class']([
+            'dsn' => $dbData['dsn'],
+            'username' => $dbData['username'],
+            'password' => $dbData['password'],
+            'charset' => $dbData['charset'],
+        ]);
+
+        $connection->open();
+
+        $Mname = $_POST['ContactForm']['name'];
+        $Memail = $_POST['ContactForm']['email'];
+        $Msubject = $_POST['ContactForm']['subject'];
+        $Mbody = $_POST['ContactForm']['body'];
+
+
+        $cmd = $connection->createCommand("INSERT INTO
+emails (senderName, senderEmail, Subject, Content)
+VALUES ('$Mname', '$Memail', '$Msubject', '$Mbody')
+");
+        @$cmd->execute();
+
+        return true;
     }
 }

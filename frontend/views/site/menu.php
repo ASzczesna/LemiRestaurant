@@ -3,7 +3,6 @@
 /* @var $this yii\web\View */
 use yii\helpers\Html;
 use yii\db\mysql;
-use yii\bootstrap\Nav;
 
 
 $this->title = 'Menu';
