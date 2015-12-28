@@ -3,17 +3,18 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Categories;
-use backend\models\CategoriesSearch;
+use backend\models\AuthItem;
+use backend\models\AuthItemSearch;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+
 /**
- * CategoriesController implements the CRUD actions for Categories model.
+ * AuthItemController implements the CRUD actions for AuthItem model.
  */
-class CategoriesController extends Controller
+class AuthItemController extends Controller
 {
     public function behaviors()
     {
@@ -28,12 +29,12 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Lists all Categories models.
+     * Lists all AuthItem models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CategoriesSearch();
+        $searchModel = new AuthItemSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -43,8 +44,8 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Displays a single Categories model.
-     * @param integer $id
+     * Displays a single AuthItem model.
+     * @param string $id
      * @return mixed
      */
     public function actionView($id)
@@ -55,17 +56,21 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Creates a new Categories model.
+     * Creates a new AuthItem model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        if(Yii::$app->user->can( 'createCategory' )){
-            $model = new Categories();
+        if(Yii::$app->user->can( 'createAuthItem' )){
+            $model = new AuthItem();
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->idcategory]);
+            if ($model->load(Yii::$app->request->post())) {
+
+                $model->created_at = time();
+                $model->updated_at = time();
+                $model->save();
+                return $this->redirect(['view', 'id' => $model->name]);
             } else {
                 return $this->render('create', [
                     'model' => $model,
@@ -79,18 +84,18 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Updates an existing Categories model.
+     * Updates an existing AuthItem model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionUpdate($id)
     {
-        if(Yii::$app->user->can( 'editCategory' )){
+        if(Yii::$app->user->can( 'editAuthItem' )){
             $model = $this->findModel($id);
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->idcategory]);
+                return $this->redirect(['view', 'id' => $model->name]);
             } else {
                 return $this->render('update', [
                     'model' => $model,
@@ -104,14 +109,14 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Deletes an existing Categories model.
+     * Deletes an existing AuthItem model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionDelete($id)
     {
-        if(Yii::$app->user->can( 'deleteCategory' )){
+        if(Yii::$app->user->can( 'deleteAuthItem' )){
             $this->findModel($id)->delete();
 
             return $this->redirect(['index']);
@@ -119,18 +124,19 @@ class CategoriesController extends Controller
         }else{
             throw new ForbiddenHttpException;
         }
+
     }
 
     /**
-     * Finds the Categories model based on its primary key value.
+     * Finds the AuthItem model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Categories the loaded model
+     * @param string $id
+     * @return AuthItem the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Categories::findOne($id)) !== null) {
+        if (($model = AuthItem::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

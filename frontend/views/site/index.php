@@ -9,7 +9,7 @@ $url = '../images/';
 
     <div class="jumbotron">
         <h1>LemiRestaurant</h1>
-        <p class="lead">Welcome to first and only one completely virtual restaurant!</p>
+        <p class="lead">Welcome to first and only completely virtual restaurant!</p>
     </div>
 
     <div class="body-content">
@@ -34,6 +34,8 @@ $url = '../images/';
                         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                         <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                         <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="4"></li>
                     </ol>
 
                     <!-- Wrapper for slides -->

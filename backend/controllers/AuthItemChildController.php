@@ -3,17 +3,17 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Categories;
-use backend\models\CategoriesSearch;
+use backend\models\AuthItemChild;
+use backend\models\AuthItemChildSearch;
 use yii\web\Controller;
-use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\ForbiddenHttpException;
 
 /**
- * CategoriesController implements the CRUD actions for Categories model.
+ * AuthItemChildController implements the CRUD actions for AuthItemChild model.
  */
-class CategoriesController extends Controller
+class AuthItemChildController extends Controller
 {
     public function behaviors()
     {
@@ -28,12 +28,12 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Lists all Categories models.
+     * Lists all AuthItemChild models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CategoriesSearch();
+        $searchModel = new AuthItemChildSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -43,60 +43,60 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Displays a single Categories model.
-     * @param integer $id
+     * Displays a single AuthItemChild model.
+     * @param string $parent
+     * @param string $child
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView($parent, $child)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($parent, $child),
         ]);
     }
 
     /**
-     * Creates a new Categories model.
+     * Creates a new AuthItemChild model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        if(Yii::$app->user->can( 'createCategory' )){
-            $model = new Categories();
+        if(Yii::$app->user->can( 'createAuthItemChild' )){
+            $model = new AuthItemChild();
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->idcategory]);
+                return $this->redirect(['view', 'parent' => $model->parent, 'child' => $model->child]);
             } else {
                 return $this->render('create', [
                     'model' => $model,
                 ]);
             }
-
         }else{
             throw new ForbiddenHttpException;
-        }
 
+        }
     }
 
     /**
-     * Updates an existing Categories model.
+     * Updates an existing AuthItemChild model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param string $parent
+     * @param string $child
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionUpdate($parent, $child)
     {
-        if(Yii::$app->user->can( 'editCategory' )){
-            $model = $this->findModel($id);
+        if(Yii::$app->user->can( 'editAuthItemChild' )){
+            $model = $this->findModel($parent, $child);
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->idcategory]);
+                return $this->redirect(['view', 'parent' => $model->parent, 'child' => $model->child]);
             } else {
                 return $this->render('update', [
                     'model' => $model,
                 ]);
             }
-
         }else{
             throw new ForbiddenHttpException;
         }
@@ -104,33 +104,36 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Deletes an existing Categories model.
+     * Deletes an existing AuthItemChild model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param string $parent
+     * @param string $child
      * @return mixed
      */
-    public function actionDelete($id)
+    public function actionDelete($parent, $child)
     {
-        if(Yii::$app->user->can( 'deleteCategory' )){
-            $this->findModel($id)->delete();
+        if(Yii::$app->user->can( 'deleteAuthItemChild' )){
+            $this->findModel($parent, $child)->delete();
 
             return $this->redirect(['index']);
 
         }else{
             throw new ForbiddenHttpException;
         }
+
     }
 
     /**
-     * Finds the Categories model based on its primary key value.
+     * Finds the AuthItemChild model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Categories the loaded model
+     * @param string $parent
+     * @param string $child
+     * @return AuthItemChild the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($parent, $child)
     {
-        if (($model = Categories::findOne($id)) !== null) {
+        if (($model = AuthItemChild::findOne(['parent' => $parent, 'child' => $child])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

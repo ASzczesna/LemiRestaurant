@@ -7,6 +7,7 @@ use backend\models\User;
 use backend\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\ForbiddenHttpException;
 use yii\filters\VerbFilter;
 
 /**
@@ -60,24 +61,30 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new User();
+        if(Yii::$app->user->can( 'createUser' )){
+            $model = new User();
 
-        if ($model->load(Yii::$app->request->post())) {
-            $lastInsertID = $model->getPrimaryKey();
-            $model->id = $lastInsertID;
+            if ($model->load(Yii::$app->request->post())) {
+                $lastInsertID = $model->getPrimaryKey();
+                $model->id = $lastInsertID;
 
-            $model->password_hash = Yii::$app->security->generatePasswordHash($_POST['User']['password_hash']);
+                $model->password_hash = Yii::$app->security->generatePasswordHash($_POST['User']['password_hash']);
 
-            $model->created_at = time();
-            $model->updated_at = time();
+                $model->created_at = time();
+                $model->updated_at = time();
 
-            $model->save(false);
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+                $model->save(false);
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
+
+        }else{
+            throw new ForbiddenHttpException;
         }
+
     }
 
     /**
@@ -88,20 +95,26 @@ class UserController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        if(Yii::$app->user->can( 'editUser' )){
+            $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post())) {
-            if(count($_POST['User']['password_hash']) <= 59){
-                $model->password_hash = Yii::$app->security->generatePasswordHash($_POST['User']['password_hash']);
+            if ($model->load(Yii::$app->request->post())) {
+                if(count($_POST['User']['password_hash']) <= 59){
+                    $model->password_hash = Yii::$app->security->generatePasswordHash($_POST['User']['password_hash']);
+                }
+                $model->updated_at = time();
+                $model->save(false);
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                return $this->render('update', [
+                    'model' => $model,
+                ]);
             }
-            $model->updated_at = time();
-            $model->save(false);
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+
+        }else{
+            throw new ForbiddenHttpException;
         }
+
     }
 
     /**
@@ -112,9 +125,15 @@ class UserController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        if(Yii::$app->user->can( 'deleteUser' )){
+            $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+            return $this->redirect(['index']);
+
+        }else{
+            throw new ForbiddenHttpException;
+        }
+
     }
 
     /**

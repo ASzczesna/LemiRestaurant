@@ -63,13 +63,6 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-//        $model = new Index;
-//        $data = $model->txt;
-//
-//        if (Yii::$app->user->isGuest) {
-//            $data = $model->btn;
-//        }
-        /*, array('data'=>$data)*/
         return $this->render('index');
     }
 

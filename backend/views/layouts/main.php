@@ -55,7 +55,23 @@ AppAsset::register($this);
                 'url' => ['/user'],
             ],
             [
-                'label' => '|', 'options' => ['class' => 'separator'] ,
+                'label' => '|', 'options' => ['class' => 'separator visible-lg visible-md visible-sm'] ,
+
+            ],
+            [
+                'label' => 'PermTypes',
+                'url' => ['/auth-item'],
+            ],
+            [
+                'label' => 'PermCombine',
+                'url' => ['/auth-item-child'],
+            ],
+            [
+                    'label' => 'AssignPerm',
+                'url' => ['//auth-assignment'],
+            ],
+            [
+                'label' => '|', 'options' => ['class' => 'separator visible-lg visible-md visible-sm'] ,
             ],
             [
                 'label' => 'Logout (' . Yii::$app->user->identity->username . ')',

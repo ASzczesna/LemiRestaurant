@@ -3,17 +3,17 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Categories;
-use backend\models\CategoriesSearch;
+use backend\models\AuthAssignment;
+use backend\models\AuthAssignmentSearch;
 use yii\web\Controller;
-use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\ForbiddenHttpException;
 
 /**
- * CategoriesController implements the CRUD actions for Categories model.
+ * AuthAssignmentController implements the CRUD actions for AuthAssignment model.
  */
-class CategoriesController extends Controller
+class AuthAssignmentController extends Controller
 {
     public function behaviors()
     {
@@ -28,12 +28,12 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Lists all Categories models.
+     * Lists all AuthAssignment models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CategoriesSearch();
+        $searchModel = new AuthAssignmentSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -43,35 +43,38 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Displays a single Categories model.
-     * @param integer $id
+     * Displays a single AuthAssignment model.
+     * @param string $item_name
+     * @param string $user_id
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView($item_name, $user_id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($item_name, $user_id),
         ]);
     }
 
     /**
-     * Creates a new Categories model.
+     * Creates a new AuthAssignment model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        if(Yii::$app->user->can( 'createCategory' )){
-            $model = new Categories();
+        if(Yii::$app->user->can( 'createAuthAssignment' )){
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->idcategory]);
+            $model = new AuthAssignment();
+
+            if ($model->load(Yii::$app->request->post())) {
+                $model->created_at = time();
+                $model->save();
+                return $this->redirect(['view', 'item_name' => $model->item_name, 'user_id' => $model->user_id]);
             } else {
                 return $this->render('create', [
                     'model' => $model,
                 ]);
             }
-
         }else{
             throw new ForbiddenHttpException;
         }
@@ -79,18 +82,19 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Updates an existing Categories model.
+     * Updates an existing AuthAssignment model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param string $item_name
+     * @param string $user_id
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionUpdate($item_name, $user_id)
     {
-        if(Yii::$app->user->can( 'editCategory' )){
-            $model = $this->findModel($id);
+        if(Yii::$app->user->can( 'editAuthAssignment' )){
+            $model = $this->findModel($item_name, $user_id);
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->idcategory]);
+                return $this->redirect(['view', 'item_name' => $model->item_name, 'user_id' => $model->user_id]);
             } else {
                 return $this->render('update', [
                     'model' => $model,
@@ -100,37 +104,39 @@ class CategoriesController extends Controller
         }else{
             throw new ForbiddenHttpException;
         }
-
     }
 
     /**
-     * Deletes an existing Categories model.
+     * Deletes an existing AuthAssignment model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param string $item_name
+     * @param string $user_id
      * @return mixed
      */
-    public function actionDelete($id)
+    public function actionDelete($item_name, $user_id)
     {
-        if(Yii::$app->user->can( 'deleteCategory' )){
-            $this->findModel($id)->delete();
+        if(Yii::$app->user->can( 'deleteAuthAssignment' )){
+            $this->findModel($item_name, $user_id)->delete();
 
             return $this->redirect(['index']);
 
         }else{
             throw new ForbiddenHttpException;
         }
+
     }
 
     /**
-     * Finds the Categories model based on its primary key value.
+     * Finds the AuthAssignment model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Categories the loaded model
+     * @param string $item_name
+     * @param string $user_id
+     * @return AuthAssignment the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($item_name, $user_id)
     {
-        if (($model = Categories::findOne($id)) !== null) {
+        if (($model = AuthAssignment::findOne(['item_name' => $item_name, 'user_id' => $user_id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
