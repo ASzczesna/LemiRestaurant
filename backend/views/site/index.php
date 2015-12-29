@@ -42,6 +42,16 @@ $this->title = 'LR backend';
 
         <br>
 
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <h3>Emails</h3>
+                <p class="text-justify">Create, read, edit or delete emails from visitors. (ID, Sender name, Sender email, Subject, Content, Note)
+                </p>
+                <p class="text-center"><a class="btn btn-lg btn-default" href="/emails">Go &raquo;</a></p>
+            </div>
+        </div>
+        <br>
+
         <div class="row ">
             <div class="col-lg-4">
                 <h3>Permission types</h3>

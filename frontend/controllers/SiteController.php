@@ -119,7 +119,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             Yii::$app->params['adminEmail'] = 'szczesna.aleksandra@gmail.com';
 
-            if ($model->sendEmail( Yii::$app->params['adminEmail'])) {
+            if ($model->sendEmail()) {
                 Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
             } else {
                 Yii::$app->session->setFlash('error', 'There was an error sending email.');

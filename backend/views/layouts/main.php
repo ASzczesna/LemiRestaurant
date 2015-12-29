@@ -55,6 +55,10 @@ AppAsset::register($this);
                 'url' => ['/user'],
             ],
             [
+                'label' => 'Emails',
+                'url' => ['/emails'],
+            ],
+            [
                 'label' => '|', 'options' => ['class' => 'separator visible-lg visible-md visible-sm'] ,
 
             ],

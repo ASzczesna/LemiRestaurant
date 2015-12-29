@@ -1,0 +1,43 @@
+<?php
+
+use yii\helpers\Html;
+use yii\grid\GridView;
+
+/* @var $this yii\web\View */
+/* @var $searchModel backend\models\EmailsSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = 'Emails';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="emails-index">
+    <style>
+        .btn-success{
+            display: none;
+        }
+    </style>
+    <h1><?= Html::encode($this->title) ?></h1>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <p>
+        <?= Html::a('Create Emails', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'IdEmail:email',
+            'senderName',
+            'senderEmail:email',
+            'Subject',
+            //'Content',
+             'Note',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
+
+</div>
