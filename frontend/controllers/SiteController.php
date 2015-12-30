@@ -7,6 +7,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\Menu;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -116,8 +117,8 @@ class SiteController extends Controller
     public function actionContact()
     {
         $model = new ContactForm();
+
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            Yii::$app->params['adminEmail'] = 'szczesna.aleksandra@gmail.com';
 
             if ($model->sendEmail()) {
                 Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
@@ -134,13 +135,14 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays about page.
+     * Displays menu page.
      *
      * @return mixed
      */
     public function actionMenu()
-    {   $model = new ContactForm();
-        return $this->render('menu');
+    {   $model = new Menu();
+        $content = $model->showMenu();
+        return $this->render('menu' ,array('content'=>$content));
     }
 
     /**
