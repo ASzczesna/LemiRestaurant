@@ -7,3 +7,12 @@
 .idea
 
 /vendor
+/tests
+
+LemiRestaurant.iml
+LICENSE.md
+requirements.php
+yii
+yii.bat
+init
+init.bat

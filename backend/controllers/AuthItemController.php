@@ -34,13 +34,18 @@ class AuthItemController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new AuthItemSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if(Yii::$app->user->can( 'watcher' )){
+            $searchModel = new AuthItemSearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+
+        }else{
+            throw new ForbiddenHttpException;
+        }
     }
 
     /**
@@ -50,9 +55,14 @@ class AuthItemController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        if(Yii::$app->user->can( 'watcher' )){
+            return $this->render('view', [
+                'model' => $this->findModel($id),
+            ]);
+
+        }else{
+            throw new ForbiddenHttpException;
+        }
     }
 
     /**

@@ -3,8 +3,9 @@ How to prepare Yii advance template project, configure Apache server and git:
 1. Install git and clone repo in the most suitable way for you (console, Source Tree etc.)
 
 2. Apache is already installed but you'll also need PHP and MySQL so type:
-        sudo apt-get install php5
-        sudo apt-get install php5-mysql
+        sudo apt-get install php5,
+        sudo apt-get install php5-mysql,
+        sudo apt-get install libapache2-mod-php5
 
 3. Download Yii project files (from file archive or by Composer - details in http://www.yiiframework.com/doc-2.0/guide-start-installation.html) and put them (unpacked) into repository folder.
 
@@ -92,6 +93,9 @@ How to prepare Yii advance template project, configure Apache server and git:
 10. Open /etc/hosts as root and add lines:
         127.0.0.1 frontend.dev
         127.0.0.1 backend.dev
+
+10.5 (It SHOULDN'T have been necessary) set 777 permissions on your app:
+        sucho chmod -R 777 /AppFolder
 
 11. To check if all the requirements are conformed open /path/to/yii/app/requirements.php and change the 14th line to
         $frameworkPath = dirname(__FILE__) . '/../../vendor/yiisoft/yii2/';

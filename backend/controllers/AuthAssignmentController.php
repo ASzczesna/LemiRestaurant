@@ -33,13 +33,18 @@ class AuthAssignmentController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new AuthAssignmentSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if(Yii::$app->user->can( 'watcher' )){
+            $searchModel = new AuthAssignmentSearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+
+        }else{
+            throw new ForbiddenHttpException;
+        }
     }
 
     /**
@@ -50,9 +55,14 @@ class AuthAssignmentController extends Controller
      */
     public function actionView($item_name, $user_id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($item_name, $user_id),
-        ]);
+        if(Yii::$app->user->can( 'watcher' )){
+            return $this->render('view', [
+                'model' => $this->findModel($item_name, $user_id),
+            ]);
+
+        }else{
+            throw new ForbiddenHttpException;
+        }
     }
 
     /**
