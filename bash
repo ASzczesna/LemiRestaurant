@@ -1,3 +1,5 @@
+#sudo chmod -R 777 ~/Dokumenty/LemiRestaurant/
+
 sudo chmod -R 777 ~/Dokumenty/LemiRestaurant/frontend/assets;
 sudo chmod -R 777 ~/Dokumenty/LemiRestaurant/frontend/runtime;
 sudo chmod -R 777 ~/Dokumenty/LemiRestaurant/frontend/web/assets;

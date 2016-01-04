@@ -61,7 +61,7 @@ class Menu extends Model
         for($i = 0; $i < count($this->categories); $i++) {
             $tempN = $this->categories[$i]['cname'];
             $this->HTMLcontent .= "<h2 class='col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-xs-12'>$tempN</h2>\n";
-            $this->HTMLcontent .= "<table class='tab col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-10 col-xs-10'>\n";
+            $this->HTMLcontent .= "<table class='tab table-striped col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-10 col-xs-10'>\n";
 
             for ($j = 0; $j < count($this->dishes); $j++) {
                 if ($this->categories[$i]['idcategory'] == $this->dishes[$j]['idcategory']) {

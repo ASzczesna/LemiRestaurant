@@ -95,8 +95,31 @@ How to prepare Yii advance template project, configure Apache server and git:
         127.0.0.1 backend.dev
 
 10.5 (It SHOULDN'T have been necessary) set 777 permissions on your app:
-        sucho chmod -R 777 /AppFolder
+        sudo chmod -R 777 /AppFolder
+
+    OR use "bash" file from main folder:
+        sudo chmod 777 /AppFolder/bash
+        ./bash
 
 11. To check if all the requirements are conformed open /path/to/yii/app/requirements.php and change the 14th line to
         $frameworkPath = dirname(__FILE__) . '/../../vendor/yiisoft/yii2/';
     and then copy this file to /frontend/web folder. Check it by opening frontend.dev/requirements.php in browser.
+
+
+12. For install less:
+    sudo apt-get install node-less
+
+In backend/assets or/and frontend/assets in AppAsset.php change 'css/site.css', to 'css/site.less',
+
+In config/main.php:
+    'components' => [
+            'less'=>array(
+                'class'=>'LessCompiler',
+                'compiledPath'=>'application.assets.css', // path to store compiled css files
+                'formatter'=>'lessjs', // - lessjs / compressed / classic , see http://leafo.net/lessphp/docs/#output_formatting for details
+                'forceCompile'=>false, // passing in true will cause the input to always be recompiled
+                'disabled'=>false, // if set to true .less files will not compile if .css file found
+            ),
+        ],
+
+In the end - change AppFolder permissions to 777, refresh sites (back and/or front) and repeat step 10.5

@@ -16,3 +16,6 @@ yii
 yii.bat
 init
 init.bat
+
+/frontend/web/css/site.css
+/backend/web/css/site.css

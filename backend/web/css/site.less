@@ -1,0 +1,240 @@
+@dred: #7b0000;
+@red: #BE0000;
+@lred: #e02222;
+
+@dgreen: #526909;
+@green: #98C10F;
+@lgreen: #BDDE4F;
+
+
+html,
+body {
+    height: 100%;
+}
+
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.wrap > .container {
+    padding: 70px 15px 20px;
+}
+
+.footer {
+    height: 60px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+    content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view th {
+    white-space: nowrap;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+li.separator{
+    position: relative;
+    z-index: -1;
+    color: #4D4D4D;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+li.separator a{
+    color: #4D4D4D !important;
+}
+footer{
+    font-size: small;
+}
+footer p.pull-right{
+    font-size: 1.5em;
+}
+footer .glyphicon{
+    top: -5px !important;
+}
+
+table th:first-child{
+    display: none;
+}
+table td:first-child{
+     display: none;
+ }
+
+
+
+
+
+
+.navbar-inverse{
+    background: linear-gradient(#98C10F, #BDDE4F) !important;
+    border-color: #98C10F !important;
+
+    .navbar-collapse{
+        border-color: @green;
+    }
+    //przycisk
+    .navbar-toggle{
+        background-color: transparent;
+        border-color: @dgreen;
+        &:hover{
+            background-color: @green;
+            border-color: @dgreen;
+        }
+        &:focus{
+            background-color: @green;
+            border-color: @dgreen;
+        }
+    }
+    //główny tytuł
+    .navbar-brand{
+        color: white !important;
+    }
+    .navbar-nav{
+        li{
+            a{
+                color: white;
+                &:hover{
+                    background-color: @lgreen;
+                }
+            }
+        }
+
+        .active{
+            a{
+                color: white;
+                background-color: @green;
+                &:hover{
+                    background-color: @green;
+                }
+            }
+        }
+    }
+}
+
+//okruszki;
+
+.breadcrumb{
+    background-color: transparent;
+    border: 5px double rgba(189, 222, 79, 0.3);
+
+    a{
+        color: @red;
+    }
+}
+
+.site-index, .site-login,  .categories-index, .dishes-index, .user-index,
+.emails-index, .auth-item-index, .auth-item-child-index, .auth-assignment-index{
+    h1, h2{
+        color: @red;
+    }
+
+    .summary{
+        padding-bottom: 10px;
+    }
+
+    table{
+        a{
+            color: @dgreen;
+            &:hover{
+                color: @green;
+            }
+        }
+    }
+
+    .pagination{
+        li{
+            span, a{
+                color: @dgreen;
+            }
+
+        }
+        .active{
+            a{
+                color: white;
+                background-color: @green;
+                border-color: @dgreen;
+            }
+        }
+    }
+}
+
+.site-login, .site-signup{
+    .btn{
+
+        color: white;
+        background-color: @green;
+        border-color: @green;
+
+        &:hover, &:active{
+            background-color: @green - #111111;
+        }
+
+    }
+}

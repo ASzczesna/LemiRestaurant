@@ -21,12 +21,11 @@ $url = '../images/';
 
                 <p class="text-justify">The menu takes its inspiration from classic American dishes like beef, lamb, pork and walleye, creatively prepared, vibrantly presented, and influenced by cuisines around the world reflecting the global, sophisticated, expanded palates of today. We invite You to visit the restaurant (this page) to come and feel this extraordinary atmosphere served in completely new way... :) </p>
 
-                <p class="text-center "><a class="btn btn-success" href="/site/menu">Our Menu</a> <a class="btn btn-info" href="/site/contact">Write a message</a></p>
+                <p class="text-center "><a class="btn btn-red" href="/site/menu">Our Menu</a>
+                    <a class="btn btn-green" href="/site/contact">Write a message</a></p>
 
             </div>
             <div class="col-lg-5">
-                <h2>Little gallery</h2>
-
                 <p class="text-center">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
@@ -68,6 +67,7 @@ $url = '../images/';
                     </a>
                 </div>
                 </p>
+                <h3 class="text-center" id="gal">Small gallery</h3>
             </div>
         </div>
 
