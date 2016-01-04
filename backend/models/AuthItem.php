@@ -10,7 +10,6 @@ use Yii;
  * @property string $name
  * @property integer $type
  * @property string $description
- * @property string $rule_name
  * @property string $data
  * @property integer $created_at
  * @property integer $updated_at
@@ -39,7 +38,7 @@ class AuthItem extends \yii\db\ActiveRecord
             [['name', 'type'], 'required'],
             [['type', 'created_at', 'updated_at'], 'integer'],
             [['description', 'data'], 'string'],
-            [['name', 'rule_name'], 'string', 'max' => 64]
+            [['name'], 'string', 'max' => 64]
         ];
     }
 
@@ -52,7 +51,6 @@ class AuthItem extends \yii\db\ActiveRecord
             'name' => 'Name',
             'type' => 'Type',
             'description' => 'Description',
-            'rule_name' => 'Rule Name',
             'data' => 'Data',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
@@ -65,14 +63,6 @@ class AuthItem extends \yii\db\ActiveRecord
     public function getAuthAssignments()
     {
         return $this->hasMany(AuthAssignment::className(), ['item_name' => 'name']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRuleName()
-    {
-        return $this->hasOne(AuthRule::className(), ['name' => 'rule_name']);
     }
 
     /**

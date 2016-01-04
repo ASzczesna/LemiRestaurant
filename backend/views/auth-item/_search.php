@@ -21,8 +21,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description') ?>
 
-    <?= $form->field($model, 'rule_name') ?>
-
     <?= $form->field($model, 'data') ?>
 
     <?php // echo $form->field($model, 'created_at') ?>
