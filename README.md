@@ -20,24 +20,24 @@ How to prepare Yii advance template project, configure Apache server and git:
     to prepare the database.
 
 7. Configure /etc/apache2/apache2.config by adding:
-        `<Directory /path/to/yii/app/frontend/web/>
+        ```<Directory /path/to/yii/app/frontend/web/>
             Options Indexes FollowSymLinks
             AllowOverride None
             Require all granted
-        </Directory>`
+        </Directory>```
 
-        `<Directory /path/to/yii/app/backend/web/>
+       ```<Directory /path/to/yii/app/backend/web/>
             Options Indexes FollowSymLinks
             AllowOverride None
             Require all granted
-        </Directory>`
+        </Directory>```
 
     and in the last line:
 
         `ServerName localhost`
 
 8. Configure /etc/apache2/sites-enabled/000-default.conf - change whole content to:
-        <VirtualHost *:80>
+        ```<VirtualHost *:80>
         	ServerName frontend.dev
         	ServerAdmin root@localhost
         	DocumentRoot "/path/to/yii/app/frontend/web"
@@ -59,10 +59,10 @@ How to prepare Yii advance template project, configure Apache server and git:
 
         	ErrorLog ${APACHE_LOG_DIR}/error.log
         	CustomLog ${APACHE_LOG_DIR}/access.log combined
-        </VirtualHost>
+        </VirtualHost>```
 
 
-        <VirtualHost *:80>
+        ```<VirtualHost *:80>
         	ServerName backend.dev
         	ServerAdmin root@localhost
         	DocumentRoot "/path/to/yii/app/backend/web"
@@ -84,7 +84,7 @@ How to prepare Yii advance template project, configure Apache server and git:
 
         	ErrorLog ${APACHE_LOG_DIR}/error.log
         	CustomLog ${APACHE_LOG_DIR}/access.log combined
-        </VirtualHost>
+        </VirtualHost>```
 
 9. Type
         `sudo a2enmod rewrite`
@@ -114,7 +114,7 @@ How to prepare Yii advance template project, configure Apache server and git:
     In backend/assets or/and frontend/assets in AppAsset.php change 'css/site.css', to 'css/site.less',
     AND
     In config/main.php:
-        `'components' => [
+        ```'components' => [
                 'less'=>array(
                     'class'=>'LessCompiler',
                     'compiledPath'=>'application.assets.css', // path to store compiled css files
@@ -122,6 +122,6 @@ How to prepare Yii advance template project, configure Apache server and git:
                     'forceCompile'=>false, // passing in true will cause the input to always be recompiled
                     'disabled'=>false, // if set to true .less files will not compile if .css file found
                 ),
-            ],`
+            ],```
     AND
     In the end - change AppFolder permissions to 777, refresh sites (back and/or front) and repeat step 10.5.
