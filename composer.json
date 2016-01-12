@@ -17,9 +17,7 @@
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.6",
         "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "*",
-        "branchonline/yii2-lightbox": "^1.1",
-        "nirvana-msu/yii2-prettyphoto": "1.0.*@dev"
+        "yiisoft/yii2-swiftmailer": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
@@ -35,20 +33,5 @@
             "npm-asset-library": "vendor/npm",
             "bower-asset-library": "vendor/bower"
         }
-    },
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "bower-asset/jquery-prettyPhoto",
-                "type": "bower-asset-library",
-                "version": "3.1.4",
-                "source": {
-                    "url": "https://github.com/scaron/prettyphoto",
-                    "type": "git",
-                    "reference": "master"
-                }
-            }
-        }
-    ]
+    }
 }

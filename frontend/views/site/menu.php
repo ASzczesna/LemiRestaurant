@@ -5,8 +5,6 @@
 
 use yii\helpers\Html;
 use yii\db\mysql;
-use frontend\models\Menu;
-
 
 $this->title = 'Menu';
 $this->params['breadcrumbs'][] = $this->title;

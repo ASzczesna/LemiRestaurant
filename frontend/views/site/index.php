@@ -3,7 +3,7 @@
 /* @var $this yii\web\View */
 
 $this->title = "LR frontend";
-$url = '../images/';
+$url = '../images/';            // ścieżka do folderu obrazów
 ?>
 <div class="site-index">
 
@@ -28,7 +28,7 @@ $url = '../images/';
             <div class="col-lg-5">
                 <p class="text-center">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                    <!-- Indicators -->
+                    <!-- wskaźnik aktywnego zdjęcia-->
                     <ol class="carousel-indicators">
                         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                         <li data-target="#carousel-example-generic" data-slide-to="1"></li>
@@ -37,7 +37,7 @@ $url = '../images/';
                         <li data-target="#carousel-example-generic" data-slide-to="4"></li>
                     </ol>
 
-                    <!-- Wrapper for slides -->
+                    <!-- zdjęcia-->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
                             <img src="<?=$url?>restaurant1.jpg">
@@ -56,7 +56,7 @@ $url = '../images/';
                         </div>
                     </div>
 
-                    <!-- Controls -->
+                    <!-- strzałki-kontrolery-->
                     <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>

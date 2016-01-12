@@ -9,11 +9,8 @@ $this->title = 'LR backend';
 
     <div class="jumbotron">
         <h2>Here's the backroom of restaurant:</h2>
-<!--        --><?php
-//            if (Yii::$app->user->isGuest) {
-//                echo "<p><a class='btn btn-lg btn-info' href='/site/login'>Please login</a></p>";
-//            }
-//        ?>
+<!--próba wyświetlenia danych w sposób analogiczny do menu we frontendzie nie działa-->
+<!--        <?//= $data; ?>-->
     </div>
     <div class="body-content">
         <div class="row">

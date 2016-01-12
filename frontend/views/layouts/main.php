@@ -9,9 +9,6 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
-use nirvana\prettyphoto;
-use yii\bootstrap\Carousel;
-
 
 AppAsset::register($this);
 ?>
@@ -54,6 +51,7 @@ SCRIPT;
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+    // dostosowane menu główne
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'Menu', 'url' => ['/site/menu']],

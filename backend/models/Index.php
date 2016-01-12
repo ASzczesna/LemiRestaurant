@@ -10,6 +10,8 @@ use Yii;
 class Index extends Model
 {
     public $data;
+    public $btn;
+    public $txt;
 
     /**
      * @inheritdoc
@@ -48,41 +50,10 @@ class Index extends Model
 </div>
 ETQ;
 
-//        if (Yii::$app->user->isGuest) {
-//            $data = "<p><a class='btn btn-lg btn-info' href='/site/login'>Please login</a></p></div>";
-//        }else{
-//$data = <<<ETQ
-//</div>
-//<div class="body-content">
-//    <div class="row">
-//        <div class="col-lg-4">
-//            <p class="text-center"><a class="btn btn-lg btn-default" href="/dishes">Dishes &raquo;</a></p>
-//        </div>
-//        <div class="col-lg-4">
-//            <p class="text-center"><a class="btn btn-lg btn-default" href="/categories">Categories &raquo;</a></p>
-//        </div>
-//        <div class="col-lg-4">
-//            <p class="text-center"><a class="btn btn-lg btn-default" href="/users">Users &raquo;</a></p>
-//        </div>
-//    </div>
-//</div></div>
-//
-//<div class="body-content">
-//    <div class="row">
-//        <div class="col-lg-4">
-//            <p class="text-center"><a class="btn btn-lg btn-default" href="/dishes">Dishes &raquo;</a></p>
-//        </div>
-//        <div class="col-lg-4">
-//            <p class="text-center"><a class="btn btn-lg btn-default" href="/categories">Categories &raquo;</a></p>
-//        </div>
-//        <div class="col-lg-4">
-//            <p class="text-center"><a class="btn btn-lg btn-default" href="/users">Users &raquo;</a></p>
-//        </div>
-//    </div>
-//</div>
-//ETQ;
-//
-//        }
-        return $data;
+        if (Yii::$app->user->isGuest) {
+            return $this->btn;
+        } else {
+            return $this->txt;
+        }
     }
 }

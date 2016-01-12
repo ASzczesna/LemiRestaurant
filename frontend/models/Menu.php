@@ -16,6 +16,8 @@ class Menu extends Model
     public $HTMLcontent = '';                // cała treść strony do wyświetlenia
 
     public function setConnection(){
+
+        // przygotowuję dane do bazy niezbędne do nawiązania połączenia
         $mainLocal = require( dirname(__FILE__) .'/../../common/config/main-local.php');
         $dbData = $mainLocal['components']['db'];
 
@@ -50,9 +52,9 @@ class Menu extends Model
     }
 
     public  function showMenu(){
-        // $tempN; - name string
-        // $tempD; - description string
-        // $tempP; - price number
+        // $tempN; - nazwa dania
+        // $tempD; - opis
+        // $tempP; - cena
 
         $this->getCategories();
         $this->getDishes();
@@ -69,6 +71,7 @@ class Menu extends Model
                     $tempD = $this->dishes[$j]['description'];
                     $tempP = $this->dishes[$j]['price'];
 
+                    // linie 77-84 jako jedno przypisanie:
 //                    $this->HTMLcontent .= "<tr >\n<td> $tempN</td>\n<td>$tempP zł</td>\n<td class='visible-lg visible-md'><i class='glyphicon glyphicon-info-sign' data-toggle='popover'  data-placement='right'  data-title='Description' data-content='$tempD'></i></td>\n<td class='visible-sm visible-xs'><i class='glyphicon glyphicon-info-sign' data-toggle='popover'  data-placement='top' data-title='Description' data-content='$tempD'></i></td>\n</tr>\n";
 
                     $this->HTMLcontent .= "<tr >\n";

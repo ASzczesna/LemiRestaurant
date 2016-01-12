@@ -10,24 +10,13 @@ use backend\models\Index;
  */
 class IndexController extends Controller
 {
-    public $data;
-    /**
-     * @inheritdoc
-     */
-    public function content()
-    {
-
-        $model = new Index();
-        if (Yii::$app->user->isGuest) {
-            $this->data = $model->button;
-            //return $model->button;
-        }else {
-            $this->data = $model->txt;
-            //return $model->txt;
-        }
-    }
+//    public $data;
 
     public function actionIndex(){
-        $this->render('index.php',array('data'=>$this->data));
+
+//        $model = new Index();
+//        $this->data = $model->content();
+//        $this->render('index.php', array('data' => $this->data));
+        $this->render('index.php');
     }
 }

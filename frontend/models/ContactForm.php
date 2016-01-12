@@ -14,7 +14,6 @@ class ContactForm extends Model
     public $email;
     public $subject;
     public $body;
-    public $verifyCode;
 
     /**
      * @inheritdoc
@@ -26,20 +25,8 @@ class ContactForm extends Model
             [['name', 'email', 'subject', 'body'], 'required'],
             // email has to be a valid email address
             ['email', 'email'],
-            // verifyCode needs to be entered correctly
-            //['verifyCode', 'captcha'],
         ];
     }
-
-    /**
-     * @inheritdoc
-     */
-//    public function attributeLabels()
-//    {
-//        return [
-//            'verifyCode' => 'Verification Code',
-//        ];
-//    }
 
     /**
      * Sends an email to the specified email address using the information collected by this model.
@@ -49,6 +36,7 @@ class ContactForm extends Model
      */
     public function sendEmail()
     {
+        // przygotowuję dane do bazy niezbędne do nawiązania połączenia
         $mainLocal = require( dirname(__FILE__) .'/../../common/config/main-local.php');
         $dbData = $mainLocal['components']['db'];
 
@@ -59,14 +47,16 @@ class ContactForm extends Model
             'charset' => $dbData['charset'],
         ]);
 
+        // nawiązuję połączenie
         $connection->open();
 
+        // odbieram dane z $_POST
         $Mname = $_POST['ContactForm']['name'];
         $Memail = $_POST['ContactForm']['email'];
         $Msubject = $_POST['ContactForm']['subject'];
         $Mbody = $_POST['ContactForm']['body'];
 
-
+        // wysyłam dane z $_POST do bazy
         $cmd = $connection->createCommand("INSERT INTO
 emails (senderName, senderEmail, Subject, Content)
 VALUES ('$Mname', '$Memail', '$Msubject', '$Mbody')
