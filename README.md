@@ -125,3 +125,6 @@ How to prepare Yii advance template project, configure Apache server and git:
             ],```
     AND
     In the end - change AppFolder permissions to 777, refresh sites (back and/or front) and repeat step 10.5.
+
+
+Whole virtual host configuration: https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-14-04-lts
