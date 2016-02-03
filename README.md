@@ -37,7 +37,7 @@ How to prepare Yii advance template project, configure Apache server and git:
         `ServerName localhost`
 
 8. Configure /etc/apache2/sites-enabled/000-default.conf - change whole content to:
-        ```<VirtualHost *:80>
+        `<VirtualHost *:80>
         	ServerName frontend.dev
         	ServerAdmin root@localhost
         	DocumentRoot "/path/to/yii/app/frontend/web"
@@ -59,7 +59,7 @@ How to prepare Yii advance template project, configure Apache server and git:
 
         	ErrorLog ${APACHE_LOG_DIR}/error.log
         	CustomLog ${APACHE_LOG_DIR}/access.log combined
-        </VirtualHost>```
+        </VirtualHost>`
 
 
         ```<VirtualHost *:80>
@@ -67,7 +67,7 @@ How to prepare Yii advance template project, configure Apache server and git:
         	ServerAdmin root@localhost
         	DocumentRoot "/path/to/yii/app/backend/web"
 
-               <Directory "/path/to/yii/app//backend/web">
+               <Directory "/path/to/yii/app/backend/web">
                    # use mod_rewrite for pretty URL support
                    RewriteEngine on
                    # If a directory or a file exists, use the request directly
@@ -90,7 +90,7 @@ How to prepare Yii advance template project, configure Apache server and git:
         `sudo a2enmod rewrite`
     to enable rewrite engine.
 
-10. Turn on "pretty URLs" - in files /backend/main.php and /frontend/main.php set:
+10. Turn on "pretty URLs" - in files /backend/config/main.php and /frontend/config/main.php set:
         `'enablePrettyUrl' => true`
 
 11. Open /etc/hosts as root and add lines:
