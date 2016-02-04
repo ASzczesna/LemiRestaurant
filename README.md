@@ -113,7 +113,7 @@ How to prepare Yii advance template project, configure Apache server and git:
     AND
     In backend/assets or/and frontend/assets in AppAsset.php change 'css/site.css', to 'css/site.less',
     AND
-    In config/main.php:
+    In common/config/main.php:
         ```'components' => [
                 'less'=>array(
                     'class'=>'LessCompiler',
